@@ -1,0 +1,15 @@
+@import "./../../../styles.scss";
+:host {
+  margin: 0 auto;
+  padding: 1%;
+  width: clamp(300px, 95%, 1100px);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--gray-bg);
+  border-radius: 10px;
+  button {
+    color: var(--white);
+    background-color: var(--primary-blue);
+  }
+}

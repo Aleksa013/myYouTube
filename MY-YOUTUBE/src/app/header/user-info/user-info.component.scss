@@ -1,0 +1,13 @@
+@import "./../../../styles.scss";
+
+:host {
+  padding: 0;
+  display: flex;
+  p {
+    color: var(--white);
+  }
+  button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+  }
+}

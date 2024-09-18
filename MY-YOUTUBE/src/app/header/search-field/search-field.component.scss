@@ -1,0 +1,36 @@
+@import "./../../../styles.scss";
+
+:host {
+  input {
+    background-color: var(--white);
+    border: 1px solid transparent;
+    color: var(--black);
+    border-radius: 4px 0 0 4px;
+    height: 20px;
+    &:hover {
+      border: 1px solid var(--white);
+    }
+    &:focus {
+      outline: 1px solid var(--primary-blue);
+    }
+  }
+  button {
+    padding: 3px 10px 3px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: 1px solid transparent;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:active {
+      cursor: pointer;
+      background-color: var(--active-blue);
+    }
+    &:disabled {
+      background-color: var(--gray-dark);
+      cursor: auto;
+    }
+  }
+}
