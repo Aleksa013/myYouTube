@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-search-field',
@@ -10,11 +11,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchFieldComponent {
   public search: string;
-  constructor() {
+  constructor(private searchService: VideoService) {
     this.search = '';
   }
 
   protected onSubmit() {
     console.log(this.search);
+    this.searchService.getSearch(this.search).subscribe((answer) => {
+      console.log(answer);
+    });
   }
 }
