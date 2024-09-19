@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header/header.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer/footer.component';
+import { StoreModule } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { FooterComponent } from './footer/footer/footer.component';
     HeaderComponent,
     MatSlideToggleModule,
     FooterComponent,
+    StoreModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

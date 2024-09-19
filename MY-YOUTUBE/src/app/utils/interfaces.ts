@@ -77,3 +77,29 @@ interface PageInfo {
   totalResults: number;
   resultsPerPage: number;
 }
+
+export interface AppStore {
+  search: SearchState;
+  videos: VideoState;
+  myVideos: MyVideosState;
+  favoriteVideos: FavoriteState;
+}
+
+export interface SearchState {
+  searchWord: string;
+  isNew: boolean;
+}
+
+export interface VideoState {
+  videos: VideoItem[];
+  nextPageToken: string;
+  prevPageToken: string;
+}
+
+export interface MyVideosState {
+  myVideo: VideoItem[];
+}
+
+export interface FavoriteState {
+  favorite: VideoItem[];
+}
