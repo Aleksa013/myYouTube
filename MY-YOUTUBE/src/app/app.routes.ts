@@ -1,3 +1,14 @@
 import { Routes } from '@angular/router';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SearchComponent } from './pages/search/search.component';
+import { ContainerComponent } from './pages/container/container.component';
+import { authGuard } from './guards/auth.guard';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: ContainerComponent, canActivate: [authGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [authGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
+];

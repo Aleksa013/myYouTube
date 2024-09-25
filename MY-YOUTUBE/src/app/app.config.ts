@@ -16,6 +16,7 @@ import { videosReducer } from './state/videoState/video.reducer';
 import { favoriteVideoReducer } from './state/favoriteVideoState/favoriteVideo.reducer';
 import { myVideoReducer } from './state/myVideoState/myVideo.reducer';
 import { searchReducer } from './state/searchState/search.reducer';
+import { authReducer } from './state/authState/auth.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,6 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     importProvidersFrom([BrowserAnimationsModule]),
     provideStore({
+      auth: authReducer,
       video: videosReducer,
       favoriteVideo: favoriteVideoReducer,
       myVideo: myVideoReducer,

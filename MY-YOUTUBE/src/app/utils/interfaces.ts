@@ -79,10 +79,15 @@ interface PageInfo {
 }
 
 export interface AppStore {
+  auth: AuthState;
   search: SearchState;
   videos: VideoState;
   myVideos: MyVideosState;
   favoriteVideos: FavoriteState;
+}
+
+export interface AuthState {
+  isAuth: boolean;
 }
 
 export interface SearchState {
