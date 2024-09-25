@@ -1,0 +1,19 @@
+<ng-template *ngIf="statistics">
+  <div class="block">
+    @if(statistics!.viewCount){
+    <mat-icon>visibility</mat-icon>
+    <span>{{ statistics!.viewCount || 0 }}</span>
+    }
+  </div>
+  <div class="block">
+    <mat-icon fontIcon="favorite">{{ statistics!.likeCount || 0 }}</mat-icon>
+  </div>
+  <div class="block">
+    <mat-icon fontIcon="heart_minus"></mat-icon>
+    <span>{{ statistics!.dislikeCount || 0 }}</span>
+  </div>
+  <div class="block">
+    <mat-icon fontIcon="forum"></mat-icon>
+    <span>{{ statistics!.commentCount || 0 }}</span>
+  </div>
+</ng-template>
