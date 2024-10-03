@@ -1,1 +1,15 @@
-<p>login works!</p>
+<h2>Login</h2>
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Your Login</mat-label>
+    <input matInput formControlName="login" placeholder="Login" />
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Your Password</mat-label>
+    <input matInput formControlName="password" placeholder="Password" />
+    <mat-icon matSuffix>visibility_lock</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+  <button mat-flat-button [disabled]="authForm.invalid">Submit</button>
+</form>

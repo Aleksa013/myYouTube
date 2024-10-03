@@ -1,0 +1,37 @@
+@import "./../../../styles.scss";
+
+:host {
+  width: 100%;
+  display: block;
+  h2 {
+    margin: 3% auto;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: var(--primary-blue);
+  }
+  form {
+    margin: 5% auto;
+    padding: 5%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    border: 0px solid transparent;
+    border-radius: 15px;
+    background-color: var(--gray-bg);
+    input {
+      width: 100%;
+      color: var(--black);
+      font-size: 24px;
+      &:hover {
+        cursor: pointer;
+        border: var(--primary-blue) 1px solid;
+      }
+    }
+    button {
+      margin: 3% auto;
+      width: 30%;
+    }
+  }
+}

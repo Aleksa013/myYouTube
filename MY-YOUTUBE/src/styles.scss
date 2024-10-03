@@ -1,3 +1,27 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$my-app-theme-primary: mat.m2-define-palette(
+  mat.$m2-blue-palette,
+  A200,
+  100,
+  900
+);
+$my-app-theme-accent: mat.m2-define-palette(mat.$m2-cyan-palette);
+$my-app-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$my-app-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $my-app-theme-primary,
+      accent: $my-app-theme-accent,
+      warn: $my-app-theme-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($my-app-theme);
+
 :root {
   --container-with: 1200px;
   --black: #2c2a29;
@@ -11,12 +35,48 @@
   --gray-bg: #e0e0e0;
 }
 
+@font-face {
+  font-family: "Arimo";
+  src: url("./../public/fonts/Arimo-Regular.ttf");
+}
+
 html,
 body {
   height: 100%;
+  --mdc-filled-button-container-color: var(--primary-blue);
+  --mdc-filled-button-label-text-color: var(--white);
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Arimo", sans-serif;
   background-color: var(--gray);
 }
+
+// @import "@angular/material/theming";
+
+// @include mat-core();
+
+// $my-app-primary: mat-palette($mat-blue);
+// $my-app-accent: mat-palette($mat-cyan, A200, A100, A400);
+// $my-app-error: mat-palette($mat-red);
+
+// $my-app-theme: mat-light-theme(
+//   (
+//     color: (
+//       primary: $my-app-primary,
+//       accent: $my-app-accent,
+//       warn: $my-app-error,
+//     ),
+//   )
+// );
+
+// @include angular-material-theme($my-app-theme);
+
+// html,
+// body {
+//   height: 100%;
+// }
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+// }
