@@ -11,6 +11,8 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +32,11 @@ export class LoginComponent implements OnInit {
   public authForm: FormGroup = new FormGroup({});
   public hide = signal(true);
 
-  constructor(private FB: FormBuilder) {}
+  constructor(
+    private FB: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.authForm = this.FB.group({
@@ -59,6 +65,11 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit() {
+    if (this.authForm.valid) {
+      this.authService.getFalseAuth(this.login!.value, this.password!.value);
+    }
+    this.router.navigate(['/home']);
+
     console.log(this.authForm.value);
   }
 }
