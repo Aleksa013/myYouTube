@@ -3,13 +3,39 @@
   <mat-form-field appearance="outline">
     <mat-label>Your Login</mat-label>
     <input matInput formControlName="login" placeholder="Login" />
-    <mat-hint>Hint</mat-hint>
+    @if(login && (login.dirty || login.touched)){
+    <mat-error>{{
+      login.hasError("required")
+        ? "You must enter a value"
+        : "The lenght must be at least 3 characters"
+    }}</mat-error>
+    }
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Your Password</mat-label>
-    <input matInput formControlName="password" placeholder="Password" />
-    <mat-icon matSuffix>visibility_lock</mat-icon>
-    <mat-hint>Hint</mat-hint>
+    <mat-label>Your password</mat-label>
+    <input
+      matInput
+      [type]="hide() ? 'password' : 'text'"
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="clickEvent($event)"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide()"
+    >
+      <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    @if(password && (password.dirty || password.touched)){
+    <mat-error>{{
+      password.hasError("required")
+        ? "You must enter a value"
+        : "The lenght must be at least 8 characters"
+    }}</mat-error>
+    }
   </mat-form-field>
-  <button mat-flat-button [disabled]="authForm.invalid">Submit</button>
+  <button mat-flat-button [disabled]="authForm.invalid" type="submit">
+    Submit
+  </button>
 </form>

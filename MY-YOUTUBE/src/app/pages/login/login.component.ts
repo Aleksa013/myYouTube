@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {
   ReactiveFormsModule,
-  FormBuilder,
   FormGroup,
   Validators,
+  AbstractControl,
+  FormBuilder,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -19,17 +21,41 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   public authForm: FormGroup = new FormGroup({});
-  constructor(private FB: FormBuilder) {
+  public hide = signal(true);
+
+  constructor(private FB: FormBuilder) {}
+
+  ngOnInit(): void {
     this.authForm = this.FB.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required],
+      login: this.FB.control<string | null>('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      password: this.FB.control<string | null>('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
+  }
+
+  public get login(): AbstractControl<string> | null {
+    return this.authForm.get('login');
+  }
+
+  public get password(): AbstractControl<string> | null {
+    return this.authForm.get('password');
+  }
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
   }
 
   public onSubmit() {

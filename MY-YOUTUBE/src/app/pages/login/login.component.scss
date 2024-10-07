@@ -13,20 +13,23 @@
   }
   form {
     margin: 5% auto;
-    padding: 5%;
-    width: 40%;
+    padding: 5% 3%;
+    width: clamp(300px, 40%, 500px);
     display: flex;
     flex-direction: column;
     border: 0px solid transparent;
     border-radius: 15px;
     background-color: var(--gray-bg);
-    input {
-      width: 100%;
-      color: var(--black);
-      font-size: 24px;
-      &:hover {
-        cursor: pointer;
-        border: var(--primary-blue) 1px solid;
+    mat-form-field {
+      margin: 0 0 5%;
+      input {
+        width: 80%;
+      }
+      .mat-mdc-icon-button:hover,
+      .mat-mdc-button-ripple:hover,
+      .mat-mdc-icon-button:focus,
+      .mat-mdc-button-ripple:focus {
+        width: 48px;
       }
     }
     button {
