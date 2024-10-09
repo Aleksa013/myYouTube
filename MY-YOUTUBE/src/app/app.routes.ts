@@ -4,9 +4,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { SearchComponent } from './pages/search/search.component';
 import { ContainerComponent } from './pages/container/container.component';
 import { authGuard } from './guards/auth.guard';
+import { loginGuard } from './guards/login.guard';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'home', component: ContainerComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchComponent, canActivate: [authGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

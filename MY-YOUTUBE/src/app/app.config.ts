@@ -33,6 +33,7 @@ export const appConfig: ApplicationConfig = {
       search: searchReducer,
     }),
     provideStoreDevtools(),
-    provideEffects(), provideAnimationsAsync(),
+    provideEffects(),
+    provideAnimationsAsync(),
   ],
 };

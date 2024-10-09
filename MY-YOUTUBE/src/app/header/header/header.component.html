@@ -1,9 +1,10 @@
-<ng-container>
+<div class="wrapper">
   <img src="./logo.png" alt="YouTubeLogo" />
   <app-search-field></app-search-field>
-  <button mat-mini-fab>
+  <button class="button--settings" mat-mini-fab>
     <mat-icon aria-label="Settings" class="icon">tune</mat-icon>
   </button>
-</ng-container>
-
+</div>
+@if(isAuth){
 <app-user-info></app-user-info>
+}

@@ -13,6 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AuthNameAction } from '../../state/authState/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private FB: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -67,6 +70,7 @@ export class LoginComponent implements OnInit {
   public onSubmit() {
     if (this.authForm.valid) {
       this.authService.getFalseAuth(this.login!.value, this.password!.value);
+      this.store.dispatch(AuthNameAction({ userName: this.login!.value }));
     }
     this.router.navigate(['/home']);
 
