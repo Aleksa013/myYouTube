@@ -3,10 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header/header.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer/footer.component';
-import { Store, StoreModule } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { VideoItem } from './utils/interfaces';
-import { selectVideos } from './state/videoState/video.selectors';
+import { StoreModule } from '@ngrx/store';
 import { CardComponent } from './pages/card/card.component';
 
 @Component({
@@ -23,9 +20,4 @@ import { CardComponent } from './pages/card/card.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  protected videos$: Observable<VideoItem[]>;
-  constructor(private store: Store) {
-    this.videos$ = this.store.select(selectVideos);
-  }
-}
+export class AppComponent {}

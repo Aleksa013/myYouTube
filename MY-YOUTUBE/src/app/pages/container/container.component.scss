@@ -1,0 +1,10 @@
+@import "./../../../styles.scss";
+
+:host {
+  margin: 1% auto;
+  width: clamp(300px, 100%, 1320px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 3%;
+}

@@ -5,5 +5,6 @@ export const SearchActions = createActionGroup({
   events: {
     'Add search': props<{ word: string }>(),
     'Update search': props<{ isNew: boolean }>(),
+    'Error search': props<{ error: string }>(),
   },
 });

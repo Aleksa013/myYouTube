@@ -69,7 +69,7 @@ export interface StatisticsData {
   commentCount: string;
 }
 
-interface ID {
+export interface ID {
   kind: string;
   videoId: string;
 }
@@ -94,6 +94,7 @@ export interface AuthState {
 export interface SearchState {
   searchWord: string;
   isNew: boolean;
+  error: string;
 }
 
 export interface VideoState {

@@ -17,5 +17,8 @@ export const videosReducer = createReducer(
     return purpose === 'next'
       ? { ...state, nextPageToken: token }
       : { ...state, prevPageToken: token };
+  }),
+  on(VideoActions.clearVideo, (state) => {
+    return { ...state, videos: [] };
   })
 );

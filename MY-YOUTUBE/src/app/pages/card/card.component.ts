@@ -1,30 +1,28 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { VideoItem } from '../../utils/interfaces';
-import { Observable } from 'rxjs';
-import { selectVideos } from '../../state/videoState/video.selectors';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { StatisticsComponent } from '../../statistics/statistics/statistics.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { LenghtLess50Pipe } from '../../pipes/lenght-less50.pipe';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [StatisticsComponent, MatButtonModule],
+  imports: [
+    CommonModule,
+    StatisticsComponent,
+    MatButtonModule,
+    LenghtLess50Pipe,
+  ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
 export class CardComponent implements OnInit {
-  private videos$: Observable<VideoItem[]>;
-  private destroyRef = inject(DestroyRef);
-  public currentVideo!: VideoItem;
+  @Input() public currentVideo!: VideoItem;
 
-  constructor(private store: Store) {
-    this.videos$ = this.store.select(selectVideos);
-  }
+  constructor(private store: Store) {}
   ngOnInit(): void {
-    this.videos$
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((videos: VideoItem[]) => (this.currentVideo = videos[0]));
+    console.log(this.currentVideo);
   }
 }

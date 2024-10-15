@@ -1,0 +1,19 @@
+<div class="block">
+  @if(statistics!.viewCount){
+  <mat-icon>visibility</mat-icon>
+  <span>{{ statistics!.viewCount || 0 }}</span>
+  }
+</div>
+<div #like class="block" (mousedown)="liked()">
+  <mat-icon fontIcon="thumb_up"></mat-icon>
+  <span>{{ statistics!.likeCount || 0 }}</span>
+</div>
+<div class="block">
+  <!-- <mat-icon fontIcon="heart_minus"></mat-icon> -->
+  <mat-icon fontIcon="thumb_down"></mat-icon>
+  <span>{{ statistics!.dislikeCount || 0 }}</span>
+</div>
+<div class="block">
+  <mat-icon fontIcon="forum"></mat-icon>
+  <span>{{ statistics!.commentCount || 0 }}</span>
+</div>

@@ -17,6 +17,7 @@ import { favoriteVideoReducer } from './state/favoriteVideoState/favoriteVideo.r
 import { myVideoReducer } from './state/myVideoState/myVideo.reducer';
 import { searchReducer } from './state/searchState/search.reducer';
 import { authReducer } from './state/authState/auth.reducers';
+import { VideosEffects } from './state/effects/videos.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,7 +34,7 @@ export const appConfig: ApplicationConfig = {
       search: searchReducer,
     }),
     provideStoreDevtools(),
-    provideEffects(),
+    provideEffects(VideosEffects),
     provideAnimationsAsync(),
   ],
 };

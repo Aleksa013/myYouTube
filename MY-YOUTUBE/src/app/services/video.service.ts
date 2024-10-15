@@ -9,15 +9,39 @@ import { SearchResult } from '../utils/interfaces';
 export class VideoService {
   constructor(private http: HttpClient) {}
 
-  public getSearch(searchWord: string) {
+  public getSearchToOrderView(searchWord: string) {
     return this.http.get<SearchResult>(urls.environment.apiUrlSearch, {
       params: {
         key: urls.key,
         type: 'video',
         part: 'snippet',
         order: 'viewCount',
-        maxResults: 30,
+        maxResults: 20,
         q: searchWord,
+      },
+    });
+  }
+
+  public getSearchToOrderDate(searchWord: string) {
+    return this.http.get<SearchResult>(urls.environment.apiUrlSearch, {
+      params: {
+        key: urls.key,
+        type: 'video',
+        part: 'snippet',
+        order: 'date',
+        maxResults: 20,
+        q: searchWord,
+      },
+    });
+  }
+
+  public getVideoByID(id: string) {
+    console.log(id);
+    return this.http.get<SearchResult>(urls.environment.apiUrlVideos, {
+      params: {
+        key: urls.key,
+        id,
+        part: 'snippet, statistics',
       },
     });
   }

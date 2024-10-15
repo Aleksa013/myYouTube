@@ -5,6 +5,7 @@ import { SearchActions } from './search.actions';
 export const initialSearchState: SearchState = {
   searchWord: '',
   isNew: false,
+  error: '',
 };
 
 export const searchReducer = createReducer(
@@ -14,5 +15,8 @@ export const searchReducer = createReducer(
   }),
   on(SearchActions.updateSearch, (state, { isNew }) => {
     return { ...state, isNew };
+  }),
+  on(SearchActions.errorSearch, (state, { error }) => {
+    return { ...state, error };
   })
 );

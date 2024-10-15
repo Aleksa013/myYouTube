@@ -1,1 +1,3 @@
-<p>container works!</p>
+@for(video of videosState$ | async; track $index){ @if(video) {
+<app-card [currentVideo]="video"></app-card>
+} }
