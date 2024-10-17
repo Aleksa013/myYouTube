@@ -1,0 +1,16 @@
+<button mat-button (click)="goBack()">Back</button>
+<article class="card">
+  <div
+    class="poster"
+    [ngStyle]="{
+      backgroundImage: 'url(' + video?.snippet?.thumbnails?.high?.url + ')'
+    }"
+  ></div>
+  <div class="content">
+    <h3 class="content__header">{{ video?.snippet?.title }}</h3>
+    <span class="content__date">{{ video?.publishTime | date }}</span>
+    <h4>Description</h4>
+    <p class="content__text">{{ video?.snippet?.description }}</p>
+    <app-statistics [video]="video!"></app-statistics>
+  </div>
+</article>

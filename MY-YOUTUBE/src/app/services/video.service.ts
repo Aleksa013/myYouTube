@@ -36,7 +36,6 @@ export class VideoService {
   }
 
   public getVideoByID(id: string) {
-    console.log(id);
     return this.http.get<SearchResult>(urls.environment.apiUrlVideos, {
       params: {
         key: urls.key,

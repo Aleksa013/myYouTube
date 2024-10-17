@@ -9,7 +9,7 @@ import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideStore } from '@ngrx/store';
+import { provideStore, StoreModule } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 import { videosReducer } from './state/videoState/video.reducer';
@@ -18,6 +18,7 @@ import { myVideoReducer } from './state/myVideoState/myVideo.reducer';
 import { searchReducer } from './state/searchState/search.reducer';
 import { authReducer } from './state/authState/auth.reducers';
 import { VideosEffects } from './state/effects/videos.effects';
+import { FavoriteVideosEffects } from './state/effects/favoriteVideos.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,7 +26,11 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
-    importProvidersFrom([BrowserAnimationsModule]),
+    importProvidersFrom([
+      BrowserAnimationsModule,
+      StoreModule.forRoot(),
+      StoreModule.forFeature('favorite', favoriteVideoReducer),
+    ]),
     provideStore({
       auth: authReducer,
       video: videosReducer,
@@ -34,7 +39,7 @@ export const appConfig: ApplicationConfig = {
       search: searchReducer,
     }),
     provideStoreDevtools(),
-    provideEffects(VideosEffects),
+    provideEffects([VideosEffects, FavoriteVideosEffects]),
     provideAnimationsAsync(),
   ],
 };

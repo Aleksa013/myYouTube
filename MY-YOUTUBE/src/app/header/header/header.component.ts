@@ -31,10 +31,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('token'));
     if (localStorage.getItem('token')) {
       const name = localStorage.getItem('token')!.split('/')[0];
-      console.log(name);
       this.store.dispatch(AuthNameAction({ userName: name }));
       this.store.dispatch(AuthAction());
     }

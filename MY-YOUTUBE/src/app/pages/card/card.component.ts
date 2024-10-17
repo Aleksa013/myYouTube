@@ -5,6 +5,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { LenghtLess50Pipe } from '../../pipes/lenght-less50.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -21,8 +22,12 @@ import { LenghtLess50Pipe } from '../../pipes/lenght-less50.pipe';
 export class CardComponent implements OnInit {
   @Input() public currentVideo!: VideoItem;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
   ngOnInit(): void {
-    console.log(this.currentVideo);
+    console.log(this.currentVideo.id);
+  }
+
+  public getCard() {
+    this.router.navigate(['video', this.currentVideo.id]);
   }
 }

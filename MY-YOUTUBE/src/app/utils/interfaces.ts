@@ -24,7 +24,7 @@ export interface VideoItem {
   channelTitle: string;
   liveBroadcastContent: string;
   publishTime: string;
-  statistics?: StatisticsData;
+  statistics: StatisticsData;
 }
 
 interface Snippet {
@@ -109,4 +109,6 @@ export interface MyVideosState {
 
 export interface FavoriteState {
   favorite: VideoItem[];
+  lastAdded: string;
+  lastRemoved: string;
 }

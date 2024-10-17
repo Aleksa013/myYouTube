@@ -1,6 +1,6 @@
 <div class="wrapper">
   <img [src]="currentVideo.snippet.thumbnails.high.url" alt="poster" />
-  <app-statistics [statistics]="currentVideo.statistics"></app-statistics>
+  <app-statistics [video]="currentVideo"></app-statistics>
   <h2>{{ currentVideo.snippet.channelTitle | lenghtLess50 }}</h2>
-  <button mat-flat-button>More ...</button>
+  <button mat-flat-button (click)="getCard()">More ...</button>
 </div>

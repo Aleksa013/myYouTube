@@ -10,6 +10,13 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'home', component: ContainerComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchComponent, canActivate: [authGuard] },
+  {
+    path: 'video/:id',
+    loadComponent: () =>
+      import('./pages/one-card/one-card.component').then(
+        (m) => m.OneCardComponent
+      ),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
