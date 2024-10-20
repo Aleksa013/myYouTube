@@ -28,15 +28,15 @@ export class StatisticsComponent implements OnInit {
   @Input() public video!: VideoItem;
   @ViewChild('like') private like: ElementRef | undefined;
   public likeCount = signal<number>(0);
-  private favoriteVideos: Observable<VideoItem[]>;
+  private favoriteVideos$: Observable<VideoItem[]>;
   private destroyRef = inject(DestroyRef);
 
   constructor(private store: Store) {
-    this.favoriteVideos = this.store.select(selectFavoriteVideos);
+    this.favoriteVideos$ = this.store.select(selectFavoriteVideos);
   }
 
   ngOnInit() {
-    this.favoriteVideos
+    this.favoriteVideos$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((favorite: VideoItem[]) => {
         if (
@@ -45,6 +45,7 @@ export class StatisticsComponent implements OnInit {
           )
         ) {
           this.likeCount.set(+this.video.statistics.likeCount + 1);
+          // this.like!.nativeElement.classList.add('liked');
         } else {
           this.likeCount.set(+this.video.statistics.likeCount);
         }

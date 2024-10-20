@@ -8,19 +8,24 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
 import { StatisticsComponent } from '../card/statistics/statistics.component';
+import { ColorsDateService } from '../../services/colorsDate/colors-date.service';
+import { LenghtLessPipe } from '../../pipes/lenght-less.pipe';
 
 @Component({
   selector: 'app-one-card',
   standalone: true,
-  imports: [CommonModule, StatisticsComponent],
+  imports: [CommonModule, StatisticsComponent, LenghtLessPipe],
   templateUrl: './one-card.component.html',
   styleUrl: './one-card.component.scss',
 })
 export class OneCardComponent implements OnInit {
   public video: VideoItem | undefined;
+  public colorBottom = '';
+  private colorService = inject(ColorsDateService);
   private videos$: Observable<VideoItem[]>;
   private destroyRef = inject(DestroyRef);
   private route = inject(ActivatedRoute);
+
   constructor(private store: Store, private location: Location) {
     this.videos$ = this.store.select(selectVideos);
   }
@@ -33,6 +38,9 @@ export class OneCardComponent implements OnInit {
         console.log('id', id);
         this.video = videos.filter((video) => video.id === id)[0];
       });
+    this.colorBottom = this.colorService.getColorByDate(
+      new Date(this.video!.snippet.publishedAt)
+    );
   }
 
   public goBack() {

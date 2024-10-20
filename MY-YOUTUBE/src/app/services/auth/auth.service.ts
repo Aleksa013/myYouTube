@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import * as myENV from './../environment/environment';
+import * as myENV from './../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { AuthAction } from '../state/authState/auth.actions';
+import { AuthAction } from './../../state/authState/auth.actions';
 
 @Injectable({
   providedIn: 'root',

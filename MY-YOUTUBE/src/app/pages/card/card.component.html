@@ -1,6 +1,15 @@
-<div class="wrapper">
+<div
+  class="wrapper"
+  [ngStyle]="{ filter: 'drop-shadow(0 0 0.75rem var(' + colorBottom + '))' }"
+>
   <img [src]="currentVideo.snippet.thumbnails.high.url" alt="poster" />
   <app-statistics [video]="currentVideo"></app-statistics>
-  <h2>{{ currentVideo.snippet.channelTitle | lenghtLess50 }}</h2>
-  <button mat-flat-button (click)="getCard()">More ...</button>
+  <h2>{{ currentVideo.snippet.channelTitle | lenghtLess : 50 }}</h2>
+  <button
+    mat-flat-button
+    (click)="getCard()"
+    [ngStyle]="{ backgroundColor: ' var(' + colorBottom + ')' }"
+  >
+    More ...
+  </button>
 </div>

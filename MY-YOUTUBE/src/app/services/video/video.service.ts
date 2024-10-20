@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as urls from './../environment/environment';
-import { SearchResult } from '../utils/interfaces';
+import * as urls from './../../environment/environment';
+import { SearchResult } from '../../utils/interfaces';
 
 @Injectable({
   providedIn: 'root',

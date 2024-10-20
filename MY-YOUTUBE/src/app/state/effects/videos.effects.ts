@@ -5,7 +5,7 @@ import { SearchActions } from '../searchState/search.actions';
 import { VideoActions } from '../videoState/video.actions';
 import { catchError, exhaustMap, Observable, of, switchMap, take } from 'rxjs';
 import { VideoItem } from '../../utils/interfaces';
-import { VideoService } from '../../services/video.service';
+import { VideoService } from '../../services/video/video.service';
 import { selectWord } from '../searchState/search.selector';
 
 @Injectable()
@@ -46,7 +46,9 @@ export class VideosEffects {
     this.search.getVideoByID(id).pipe(
       take(1),
       switchMap(({ items }) => {
-        return of(...items.map((video) => VideoActions.addVideo({ video })));
+        return of(
+          ...items.map((video: VideoItem) => VideoActions.addVideo({ video }))
+        );
       }),
       catchError((err) => of(SearchActions.errorSearch({ error: err.message })))
     );

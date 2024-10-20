@@ -1,8 +1,8 @@
-import { LenghtLess50Pipe } from './lenght-less50.pipe';
+import { LenghtLessPipe } from './lenght-less.pipe';
 
 describe('LenghtLess50Pipe', () => {
   it('create an instance', () => {
-    const pipe = new LenghtLess50Pipe();
+    const pipe = new LenghtLessPipe();
     expect(pipe).toBeTruthy();
   });
 });

@@ -16,6 +16,7 @@ export const routes: Routes = [
       import('./pages/one-card/one-card.component').then(
         (m) => m.OneCardComponent
       ),
+    pathMatch: 'full',
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },

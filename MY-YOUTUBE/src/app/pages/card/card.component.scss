@@ -5,13 +5,13 @@
   padding: 1%;
   display: block;
   width: clamp(300px, 25%, 400px);
-  background-color: var(--gray-dark);
   border: 1px solid transparent;
   border-radius: 10px;
   .wrapper {
     width: clamp(300px, 25%, 400px);
     display: flex;
     flex-direction: column;
+    background-color: var(--gray-dark);
     button {
       width: clamp(260px, 50%, 360px);
       margin: 1% auto;

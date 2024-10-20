@@ -1,5 +1,16 @@
-<button mat-button (click)="goBack()">Back</button>
-<article class="card">
+<button
+  mat-button
+  (click)="goBack()"
+  [ngStyle]="{ backgroundColor: 'var(' + colorBottom + ')' }"
+>
+  Back
+</button>
+<article
+  class="card"
+  [ngStyle]="{
+    filter: 'drop-shadow(0.75rem 0.75rem 0.75rem var(' + colorBottom + '))'
+  }"
+>
   <div
     class="poster"
     [ngStyle]="{
@@ -8,9 +19,13 @@
   ></div>
   <div class="content">
     <h3 class="content__header">{{ video?.snippet?.title }}</h3>
-    <span class="content__date">{{ video?.publishTime | date }}</span>
-    <h4>Description</h4>
-    <p class="content__text">{{ video?.snippet?.description }}</p>
+    <span class="content__date">{{
+      video?.snippet?.publishedAt | date : "M/d/yy"
+    }}</span>
+    <h4 [ngStyle]="{ color: 'var(' + colorBottom + ')' }">Description</h4>
+    <p class="content__text">
+      {{ video?.snippet?.description! | lenghtLess : 150 }}
+    </p>
     <app-statistics [video]="video!"></app-statistics>
   </div>
 </article>
