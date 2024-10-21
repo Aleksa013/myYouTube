@@ -2,12 +2,14 @@
 
 :host {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: var(--gray-bg);
   border-radius: 10px;
   .wrapper {
     margin: 0 auto;
+    transition: 0.5s;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -17,6 +19,9 @@
       color: var(--white);
       background-color: var(--primary-blue);
     }
+  }
+  .settingsVisible {
+    transition: 0.5s;
   }
 }
 

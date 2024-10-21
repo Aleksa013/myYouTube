@@ -8,6 +8,7 @@
   border: 1px solid transparent;
   border-radius: 10px;
   .wrapper {
+    padding: 1% 1% 5%;
     width: clamp(300px, 25%, 400px);
     display: flex;
     flex-direction: column;

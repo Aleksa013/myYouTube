@@ -1,4 +1,11 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UserInfoComponent } from '../user-info/user-info.component';
@@ -8,6 +15,7 @@ import { Observable } from 'rxjs';
 import { selectAuth } from '../../state/authState/auth.selector';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthAction, AuthNameAction } from '../../state/authState/auth.actions';
+import { SettingsPanelComponent } from '../settingsPanel/settings-panel/settings-panel.component';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +25,16 @@ import { AuthAction, AuthNameAction } from '../../state/authState/auth.actions';
     MatIconModule,
     UserInfoComponent,
     SearchFieldComponent,
+    SettingsPanelComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
   public isAuth = false;
+  public isSettingsOpen = false;
+  @ViewChild('wrapper') public wrapper!: ElementRef;
+  @ViewChild('userInfo') public userInfo!: ElementRef;
   private readonly authStatus: Observable<boolean>;
   private destroyRef = inject(DestroyRef);
 
@@ -39,5 +51,18 @@ export class HeaderComponent implements OnInit {
     this.authStatus
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((status: boolean) => (this.isAuth = status));
+  }
+
+  public toggleVisibleSettings() {
+    this.isSettingsOpen = !this.isSettingsOpen;
+    setTimeout(() => {
+      if (this.wrapper.nativeElement.classList.contains('settingsVisible')) {
+        this.wrapper.nativeElement.classList.remove('settingsVisible');
+        this.userInfo.nativeElement.classList.remove('settingsVisible');
+      } else {
+        this.wrapper.nativeElement.classList.add('settingsVisible');
+        this.userInfo.nativeElement.classList.add('settingsVisible');
+      }
+    }, 500);
   }
 }

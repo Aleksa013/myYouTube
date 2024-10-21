@@ -1,0 +1,31 @@
+@import "./../../../../styles.scss";
+
+:host {
+  margin: 2% auto 1%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  .sorting__date,
+  .sorting__like,
+  .sorting__view {
+    display: flex;
+    align-items: center;
+    h5 {
+      margin: 0;
+      width: 7em;
+      display: inline-block;
+      font-size: 14px;
+      color: var(--white);
+    }
+    button {
+      border: 1px solid transparent;
+      background-color: transparent;
+      color: var(--primary-blue);
+      &:hover {
+        cursor: pointer;
+        color: var(--active-blue);
+      }
+    }
+  }
+}
