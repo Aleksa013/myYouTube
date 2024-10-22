@@ -7,6 +7,7 @@ export const VideoActions = createActionGroup({
     'Add Video': props<{ video: VideoItem }>(),
     'Update Token': props<{ purpose: 'next' | 'prev'; token: string }>(),
     'Clear Video': emptyProps(),
-    'Update Video': props<{ id: string; liked: boolean }>(),
+    'Update Video': props<{ newVideo: VideoItem[] }>(),
+    Success: emptyProps(),
   },
 });

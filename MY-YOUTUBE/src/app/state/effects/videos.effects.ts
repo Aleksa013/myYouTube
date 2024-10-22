@@ -47,6 +47,7 @@ export class VideosEffects {
       take(1),
       switchMap(({ items }) => {
         return of(
+          VideoActions.clearVideo(),
           ...items.map((video: VideoItem) => VideoActions.addVideo({ video }))
         );
       }),

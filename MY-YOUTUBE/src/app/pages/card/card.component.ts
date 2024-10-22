@@ -22,7 +22,6 @@ export class CardComponent implements OnInit {
 
   constructor(private store: Store, private router: Router) {}
   ngOnInit(): void {
-    console.log(this.currentVideo);
     this.colorBottom = this.colorService.getColorByDate(
       new Date(this.currentVideo!.snippet.publishedAt)
     );

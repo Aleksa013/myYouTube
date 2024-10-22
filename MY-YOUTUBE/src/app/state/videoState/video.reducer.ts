@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { VideoItem, VideoState } from '../../utils/interfaces';
+import { VideoState } from '../../utils/interfaces';
 import { VideoActions } from './video.actions';
 
 export const initialVideosState: VideoState = {
@@ -21,17 +21,10 @@ export const videosReducer = createReducer(
   on(VideoActions.clearVideo, (state) => {
     return { ...state, videos: [] };
   }),
-  on(VideoActions.updateVideo, (state, { id, liked }) => {
-    [...state.videos].forEach((video: VideoItem) => {
-      if (video.id.videoId === id && video.statistics!.favoriteCount) {
-        const count = Number(video.statistics.favoriteCount);
-        if (liked) {
-          video.statistics.favoriteCount = count + 1 + '';
-        } else {
-          video.statistics.favoriteCount = count - 1 + '';
-        }
-      }
-    });
-    return { ...state, videos: [...state.videos] };
+  on(VideoActions.updateVideo, (state, { newVideo }) => {
+    return { ...state, videos: [...newVideo] };
+  }),
+  on(VideoActions.success, (state) => {
+    return { ...state };
   })
 );

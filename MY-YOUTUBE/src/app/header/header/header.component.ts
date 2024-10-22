@@ -61,7 +61,6 @@ export class HeaderComponent implements OnInit {
         this.userInfo.nativeElement.classList.remove('settingsVisible');
       } else {
         this.wrapper.nativeElement.classList.add('settingsVisible');
-        this.userInfo.nativeElement.classList.add('settingsVisible');
       }
     }, 500);
   }
