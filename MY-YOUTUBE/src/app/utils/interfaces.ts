@@ -89,6 +89,7 @@ export interface AppStore {
 export interface AuthState {
   isAuth: boolean;
   userName: string | undefined;
+  avatar: string;
 }
 
 export interface SearchState {

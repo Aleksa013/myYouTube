@@ -1,4 +1,4 @@
 <p>{{ userName ? userName : "" }}</p>
-<button mat-mini-fab>
-  <mat-icon>person</mat-icon>
+<button mat-mini-fab (click)="goToProfile()">
+  <mat-icon>{{ avatar$() }}</mat-icon>
 </button>

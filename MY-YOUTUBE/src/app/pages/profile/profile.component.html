@@ -1,0 +1,29 @@
+<h2>Welcome to your profile, {{ userName }} !</h2>
+<div class="name">
+  <span>Your name:</span>
+  <h3 *ngIf="!editMode(); else Edit">{{ userName }}</h3>
+  <button mat-button (click)="editMode() ? saveNewName() : changeEditMode()">
+    <mat-icon>{{ editMode() ? "save" : "edit" }}</mat-icon>
+  </button>
+</div>
+<ng-template #Edit>
+  <input type="text" [(ngModel)]="newName" [placeholder]="userName" />
+</ng-template>
+
+<div class="avatar">
+  <span>Your avatar:</span>
+
+  <mat-icon>{{ newAva }}</mat-icon>
+  <select [(ngModel)]="newAva">
+    <option>person</option>
+    <option>self_improvement</option>
+    <option>face</option>
+    <option>face_6</option>
+    <option>face_4</option>
+    <option>girl</option>
+  </select>
+
+  <button mat-button (click)="saveNewAvatar()">
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

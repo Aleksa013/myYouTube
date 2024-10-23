@@ -14,7 +14,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectAuth } from '../../state/authState/auth.selector';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthAction, AuthNameAction } from '../../state/authState/auth.actions';
+import {
+  AuthAction,
+  AuthAvatarAction,
+  AuthNameAction,
+} from '../../state/authState/auth.actions';
 import { SettingsPanelComponent } from '../settingsPanel/settings-panel/settings-panel.component';
 
 @Component({
@@ -33,13 +37,14 @@ import { SettingsPanelComponent } from '../settingsPanel/settings-panel/settings
 export class HeaderComponent implements OnInit {
   public isAuth = false;
   public isSettingsOpen = false;
+  public avatar = 'person';
   @ViewChild('wrapper') public wrapper!: ElementRef;
   @ViewChild('userInfo') public userInfo!: ElementRef;
-  private readonly authStatus: Observable<boolean>;
+  private readonly authStatus$: Observable<boolean>;
   private destroyRef = inject(DestroyRef);
 
   constructor(private store: Store) {
-    this.authStatus = this.store.select(selectAuth);
+    this.authStatus$ = this.store.select(selectAuth);
   }
 
   ngOnInit() {
@@ -48,7 +53,11 @@ export class HeaderComponent implements OnInit {
       this.store.dispatch(AuthNameAction({ userName: name }));
       this.store.dispatch(AuthAction());
     }
-    this.authStatus
+    if (localStorage.getItem('ava')) {
+      const ava = localStorage.getItem('ava')!;
+      this.store.dispatch(AuthAvatarAction({ avatar: ava }));
+    }
+    this.authStatus$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((status: boolean) => (this.isAuth = status));
   }
@@ -58,7 +67,6 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => {
       if (this.wrapper.nativeElement.classList.contains('settingsVisible')) {
         this.wrapper.nativeElement.classList.remove('settingsVisible');
-        this.userInfo.nativeElement.classList.remove('settingsVisible');
       } else {
         this.wrapper.nativeElement.classList.add('settingsVisible');
       }

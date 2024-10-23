@@ -5,11 +5,13 @@ import { SearchComponent } from './pages/search/search.component';
 import { ContainerComponent } from './pages/container/container.component';
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
   { path: 'home', component: ContainerComponent, canActivate: [authGuard] },
   { path: 'search', component: SearchComponent, canActivate: [authGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
   {
     path: 'video/:id',
     loadComponent: () =>

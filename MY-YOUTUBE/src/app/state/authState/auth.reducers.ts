@@ -1,10 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { AuthState } from '../../utils/interfaces';
-import { AuthAction, AuthNameAction } from './auth.actions';
+import { AuthAction, AuthAvatarAction, AuthNameAction } from './auth.actions';
 
 export const initialAuthState: AuthState = {
   isAuth: false,
   userName: undefined,
+  avatar: 'person',
 };
 
 export const authReducer = createReducer(
@@ -14,5 +15,8 @@ export const authReducer = createReducer(
   }),
   on(AuthNameAction, (state, { userName }) => {
     return { ...state, userName };
+  }),
+  on(AuthAvatarAction, (state, { avatar }) => {
+    return { ...state, avatar };
   })
 );

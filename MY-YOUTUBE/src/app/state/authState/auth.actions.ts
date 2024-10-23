@@ -5,3 +5,7 @@ export const AuthNameAction = createAction(
   '[isAuth] name change',
   props<{ userName: string }>()
 );
+export const AuthAvatarAction = createAction(
+  '[isAuth] avatar change',
+  props<{ avatar: string }>()
+);
