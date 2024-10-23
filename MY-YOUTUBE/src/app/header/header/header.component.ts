@@ -20,6 +20,7 @@ import {
   AuthNameAction,
 } from '../../state/authState/auth.actions';
 import { SettingsPanelComponent } from '../settingsPanel/settings-panel/settings-panel.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -43,7 +44,7 @@ export class HeaderComponent implements OnInit {
   private readonly authStatus$: Observable<boolean>;
   private destroyRef = inject(DestroyRef);
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.authStatus$ = this.store.select(selectAuth);
   }
 
@@ -71,5 +72,9 @@ export class HeaderComponent implements OnInit {
         this.wrapper.nativeElement.classList.add('settingsVisible');
       }
     }, 500);
+  }
+
+  public goToMain() {
+    this.router.navigate(['home']);
   }
 }

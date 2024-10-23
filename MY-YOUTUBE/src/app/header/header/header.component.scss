@@ -15,10 +15,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    button {
-      color: var(--white);
-      background-color: var(--primary-blue);
-    }
   }
   .settingsVisible {
     transition: 0.5s;
@@ -35,6 +31,8 @@
       justify-content: space-around;
     }
     .button--settings {
+      color: var(--white);
+      background-color: var(--primary-blue);
       width: 40px;
       margin: 0;
     }

@@ -3,6 +3,7 @@
 :host {
   margin: 2% auto;
   padding: 2%;
+  height: 85vh;
   width: 86%;
   background-color: var(--gray-bg);
   border-radius: 5px;
@@ -10,7 +11,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
   h2 {
+    margin: 10% auto;
     width: 100%;
     text-align: center;
     font-size: 24px;
@@ -21,7 +24,9 @@
     margin: 0 auto;
     color: var(--white);
   }
-  .name {
+  .name,
+  .avatar {
+    margin: 10% auto;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -29,7 +34,8 @@
     span {
       font-size: 20px;
     }
-    input {
+    input,
+    select {
       margin: 0 auto;
       width: 40%;
       background-color: var(--white);
@@ -46,9 +52,8 @@
     }
   }
   .avatar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    mat-icon {
+      margin: 0 2% 0 5%;
+    }
   }
 }
